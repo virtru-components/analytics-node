@@ -1,5 +1,5 @@
 
-#analytics-node
+#virtru-components/analytics-node
 
 A node.js client for [Segment](https://segment.com) — The hassle-free way to integrate analytics into any application.
 
