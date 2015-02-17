@@ -1,15 +1,23 @@
 
 #analytics-node
 
-[![Build Status](https://api.travis-ci.org/segmentio/analytics-node.svg?branch=master)](https://travis-ci.org/segmentio/analytics-node)
-
 A node.js client for [Segment](https://segment.com) — The hassle-free way to integrate analytics into any application.
 
-## Installation
-
-```bash
-$ npm install --save analytics-node
+This fork supports usage with browserify using something like the following command:
 ```
+$ browserify lib/** -o analytics-node.js -s analytics-node -r ./lib/index.js:analytics-node-req
+```
+
+Building this library using browserify allows for importing this library into other build systems such as Component.  Our
+primary use-case for the ability to do this is we're then able to emit analytics in the background script for both Chrome
+and Firefox without having to rely on Analytics.js side-loading scripts into the DOM and violating the Content Security
+Policy (CSP) of the site we're integrating with.
+
+This fork removes references to `superagent-proxy` and `debug` to reduce the size of the built library.
+
+Also, there's a check for a predefined global variable named `componentRequest` specifically so that an object
+matching the `superagent` API can be injected for use instead of `superagent`.  The purpose here is to allow us
+to configure a `superagent` object that is provided with the FF xhr object.
 
 ## Documentation
 
