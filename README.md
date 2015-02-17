@@ -13,7 +13,7 @@ primary use-case for the ability to do this is we're then able to emit analytics
 and Firefox without having to rely on Analytics.js side-loading scripts into the DOM and violating the Content Security
 Policy (CSP) of the site we're integrating with.
 
-This fork removes references to `superagent-proxy` and `debug` to reduce the size of the built library.
+This fork removes references to `superagent-proxy`, `lodash` and `debug` to drastically reduce the size of the built library.
 
 Also, there's a check for a predefined global variable named `componentRequest` specifically so that an object
 matching the `superagent` API can be injected for use instead of `superagent`.  The purpose here is to allow us
